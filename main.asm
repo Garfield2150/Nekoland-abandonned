@@ -68,9 +68,6 @@ _main:
 	mov dword [renderer], eax
 	add esp, 4*3
 	
-	;warp scene
-	;mov dword [scene], 1
-	
 	;turn cursor off
 	push false
 	call _SDL_ShowCursor

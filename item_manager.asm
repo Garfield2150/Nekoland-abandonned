@@ -1,5 +1,8 @@
 nothing_item equ 0
 fish_item equ 1
+sword_item equ 2
+bow_item equ 3
+arrow_item equ 4
 
 section .bss
 inventory:
@@ -21,6 +24,8 @@ _render_item:
 	jle _item1_nothing
 	cmp dword [inventory.item1], fish_item
 	je _item1_fish
+	cmp dword [inventory.item1], sword_item
+	je _item1_sword
 	
 	_render_item2:
 	;second slot

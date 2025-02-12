@@ -85,38 +85,34 @@ _physics_wall:
 	_stop_up:
 		cmp dword [eax+SDL_SCANCODE_LSHIFT], true
 		je _stop_run_up
-		sub dword [image_rect.y], speed
+		add dword [neko_rect.y], speed
 		ret
 	_stop_down:
 		cmp dword [eax+SDL_SCANCODE_LSHIFT], true
 		je _stop_run_down
-		add dword [image_rect.y], speed
+		sub dword [neko_rect.y], speed
 		ret
 	_stop_left:
 		cmp dword [eax+SDL_SCANCODE_LSHIFT], true
 		je _stop_run_left
-		sub dword [image_rect.x], speed
+		add dword [neko_rect.x], speed
 		ret
 	_stop_right:
 		cmp dword [eax+SDL_SCANCODE_LSHIFT], true
 		je _stop_run_right
-		add dword [image_rect.x], speed
+		sub dword [neko_rect.x], speed
 		ret
 	_stop_run_up:
-		add dword [neko_rect.y], speed
-		sub dword [image_rect.y], speed*speed_up
+		add dword [neko_rect.y], speed*speed_up*2
 		ret
 	_stop_run_down:
-		sub dword [neko_rect.y], speed
-		add dword [image_rect.y], speed*speed_up
+		sub dword [neko_rect.y], speed*speed_up*2
 		ret
 	_stop_run_left:
-		add dword [neko_rect.x], speed
-		sub dword [image_rect.x], speed*speed_up
+		add dword [neko_rect.x], speed*speed_up*2
 		ret
 	_stop_run_right:
-		sub dword [neko_rect.x], speed
-		add dword [image_rect.x], speed*speed_up
+		sub dword [neko_rect.x], speed*speed_up*2
 		ret
 		
 _check_click:

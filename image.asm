@@ -24,6 +24,9 @@ section .data
 	coin: db "Assets/inventory/coin.png", 0
 	inventory_texture: db "Assets/inventory/inventory.png", 0
 	fish: db "Assets/inventory/fish.png", 0
+	sword_texture: db "Assets/inventory/sword.png", 0
+	bow: db "Assets/inventory/bow.png", 0
+	arrow: db "Assets/inventory/arrow.png", 0
 	;hearts
 	heart5of5: db "Assets/hearts/heart5of5.png", 0
 	heart4of5: db "Assets/hearts/heart4of5.png", 0
@@ -80,6 +83,9 @@ section .bss
 		.coin: resb 4
 		.inventory: resb 4
 		.fish: resb 4
+		.sword: resb 4
+		.bow: resb 4
+		.arrow: resb 4
 		;hearts
 		.heart5of5: resb 4
 		.heart4of5: resb 4
@@ -413,6 +419,48 @@ _load_image:
 	push NULL
 	push NULL
 	push dword [texture.fish]
+	call _SDL_QueryTexture
+	add esp, 4*5
+	
+	;load sword
+	push sword_texture
+	push dword [renderer]
+	call _IMG_LoadTexture
+	mov dword [texture.sword], eax
+	add esp, 4*2
+	push 0
+	push 0
+	push NULL
+	push NULL
+	push dword [texture.sword]
+	call _SDL_QueryTexture
+	add esp, 4*5
+	
+	;load bow
+	push bow
+	push dword [renderer]
+	call _IMG_LoadTexture
+	mov dword [texture.bow], eax
+	add esp, 4*2
+	push 0
+	push 0
+	push NULL
+	push NULL
+	push dword [texture.bow]
+	call _SDL_QueryTexture
+	add esp, 4*5
+	
+	;load arrow
+	push arrow
+	push dword [renderer]
+	call _IMG_LoadTexture
+	mov dword [texture.arrow], eax
+	add esp, 4*2
+	push 0
+	push 0
+	push NULL
+	push NULL
+	push dword [texture.arrow]
 	call _SDL_QueryTexture
 	add esp, 4*5
 	
